@@ -1,0 +1,42 @@
+{
+  "name": "webpack-import-chunks-manifest",
+  "version": "1.0.0",
+  "description": "webpack plugin for creating json file with the mapping between import source path/name and output chunks",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist",
+    "test": "jest",
+    "babel": "babel src --out-dir dist --ignore \"**/tests/*.tests.js\" -s",
+    "build": "run-s clean babel",
+    "prepack": "npm run build"
+  },
+  "author": "manxeguin",
+  "license": "MIT",
+  "files": [
+    "dist/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manxeguin/webpack-import-chunks-manifest"
+  },
+  "peerDependencies": {
+    "webpack": "^4.44.2 || ^5.47.0"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "npm-run-all": "^4.1.5",
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "7.14.5",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "babel-loader": "8.2.2",
+    "jest": "^27.4.5",
+    "webpack": "5.61.0",
+    "webpack-merge": "^5.8.0"
+  }
+}
