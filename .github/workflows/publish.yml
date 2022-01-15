@@ -12,8 +12,12 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
+      - run: git config --global user.name "manxeguin"
+      - run: git config --global user.email "manxeguin1987@gmail.com"
+      - run: npm version ${{ github.event.release.tag_name }}
       - run: npm ci --ignore-scripts
       - run: npm run test
       - run: npm publish --ignore-scripts --tag ${{ github.event.release.target_commitish }}
+      - run: git push
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
