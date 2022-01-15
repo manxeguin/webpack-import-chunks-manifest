@@ -2,12 +2,14 @@
 
 ## Motivation
 
-When we have independent javascript applications (like module federated apps) its difficult to know exactly what are the JS chunks that belongs to concrete parts of that application, especially dynamic imported chunks.
+Sometimes webpack magic comments `/* webpackPrefetch: true *//* webpackPreload: true */` are not enough for prefetching/preloading when you have independent applications (like module federated apps), also you can not start preloading/prefetching until its executed.
 
-With this plugin we can create a json file mapping that imports with its specific javascript chunks, which will allow us to:
+Its difficult to know exactly what are the JS chunks that belongs to concrete parts of that application, especially dynamic imported chunks.
+
+This basic plugin is just to create a json file mapping that imports with its specific javascript chunks, which will allow us to:
 
 - *Preload/Prefetch* from different apps (like host or other remote app in Module federation)
-- In consecuence of the previous: *avoid sequential downloading* of independent apps. Ex: *Host --> remoteApp --> dynamic import* part of remote app could be parallel with preloading/prefetching
+- In consequence of the previous: *avoid sequential downloading* of independent apps. Ex: *Host --> remoteApp --> dynamic import* part of remote app could be parallel with preloading/prefetching
 ## Install
 
 Using npm:
