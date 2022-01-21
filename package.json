@@ -16,7 +16,7 @@
   "author": "manxeguin",
   "license": "MIT",
   "files": [
-    "dist/**"
+    "dist/*"
   ],
   "repository": {
     "type": "git",
