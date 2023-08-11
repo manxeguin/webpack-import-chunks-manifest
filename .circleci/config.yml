@@ -26,6 +26,11 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
+          name: Configure Git User Identity
+          command: |
+            git config --global user.name "manxeguin"
+            git config --global user.email "manxeguin1987@gmail.com"
+      - run:
           name: Log in to npm
           command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
           environment:
