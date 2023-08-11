@@ -25,6 +25,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/project
+      - run: mkdir -p ~/.ssh      
+      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run:
           name: Configure Git User Identity
           command: |
