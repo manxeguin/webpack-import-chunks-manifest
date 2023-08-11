@@ -1,49 +1,10 @@
 version: 2.1
 orbs:
   node: circleci/node@5.0.3
-jobs:
-  build:
-    docker:
-      - image: node:16
-
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: npm install
-      - run:
-          name: Build and Test
-          command: npm run build && npm test
-
-  build_and_deploy:
-    docker:
-      - image: node:16
-
-    steps:
-      - checkout
-      - run:
-          name: Install Dependencies
-          command: npm install
-      - run:
-          name: Build and Test
-          command: npm run build && npm test
-      - run:
-          name: Deploy to Production
-          command: echo "deploying"
-
 workflows:
-  version: 2
-  branches_and_merged:
+  build_and_test:
     jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - '*'
-      - build_and_deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - main
+      - node/run:
+          npm-run: test
+      - node/run:
+          npm-run: build
