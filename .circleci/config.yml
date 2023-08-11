@@ -26,6 +26,11 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
+          name: Log in to npm
+          command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
+          environment:
+            NPM_TOKEN: $NPM_TOKEN
+      - run:
           command: npm run version-packages
           name: version lib
       - run:
