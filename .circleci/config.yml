@@ -6,3 +6,5 @@ workflows:
     jobs:
       - node/run:
           npm-run: build
+      - node/run:
+          npm-run: test
