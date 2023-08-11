@@ -1,10 +1,41 @@
 version: 2.1
 orbs:
-  node: circleci/node@5.0.3
-workflows:
+  node: circleci/node@5.0.2
+
+jobs:
   build_and_test:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          command: npm run test
+          name: Run tests
+      - run:
+          command: npm run build
+          name: Build app
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - .
+
+  deploy:
+    executor: node/default
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          command: npm run publish-packages
+          name: publish lib
+
+workflows:
+  test_my_app:
     jobs:
-      - node/run:
-          npm-run: test
-      - node/run:
-          npm-run: build
+      - build_and_test
+      - deploy:
+          requires:
+            - build_and_test # only deploy if the build_and_test job has completed
+          filters:
+            branches:
+              only: main 
