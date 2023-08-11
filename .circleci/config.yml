@@ -19,6 +19,30 @@ jobs:
           root: ~/project
           paths:
             - .
+      
+
+      - run:
+          name: Configure Git User Identity
+          command: |
+            git config --global user.name "manxeguin"
+            git config --global user.email "manxeguin1987@gmail.com"
+      - run:
+          name: Log in to npm
+          command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
+          environment:
+            NPM_TOKEN: $NPM_TOKEN
+      - run:
+          command: npm run version-packages
+          name: version lib
+      - run:
+          command: npm run publish-packages
+          name: publish lib
+      - run:
+          name: Commit and Push Changes
+          command: |
+            git add .
+            git commit -m "Changeset version and publish"
+            git push --follow-tags
 
   deploy:
     executor: node/default
@@ -54,9 +78,9 @@ workflows:
   test_my_app:
     jobs:
       - build_and_test
-      - deploy:
-          requires:
-            - build_and_test # only deploy if the build_and_test job has completed
-          filters:
-            branches:
-              only: main 
+      # - deploy:
+      #     requires:
+      #       - build_and_test # only deploy if the build_and_test job has completed
+      #     filters:
+      #       branches:
+      #         only: main 
