@@ -12,7 +12,8 @@
     "babel": "babel src --out-dir dist --ignore \"**/tests/*.tests.js\" -s",
     "build": "run-s clean babel",
     "prepack": "npm run build",
-    "publish-packages": "changeset version"
+    "version-packages": "changeset version",
+    "publish-packages": "changeset publish"
   },
   "author": "manxeguin",
   "license": "MIT",

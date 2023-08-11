@@ -26,8 +26,17 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
+          command: npm run version-packages
+          name: version lib
+      - run:
           command: npm run publish-packages
           name: publish lib
+      - run:
+          name: Commit and Push Changes
+          command: |
+            git add .
+            git commit -m "Changeset version and publish"
+            git push --follow-tags
 
 workflows:
   test_my_app:
