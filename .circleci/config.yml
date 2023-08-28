@@ -47,6 +47,9 @@ jobs:
   deploy:
     executor: node/default
     steps:
+      - add_ssh_keys:
+            fingerprints:
+              - "SHA256:R4kY2ZFUDSGW7GCgSVY8X7NtLFbx018ExmkZokY6xQk"
       - attach_workspace:
           at: ~/project
       - run: mkdir -p ~/.ssh      
