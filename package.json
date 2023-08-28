@@ -1,6 +1,6 @@
 {
   "name": "webpack-import-chunks-manifest",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "webpack plugin for creating json file with the mapping between import source path/name and output chunks",
   "main": "dist/index.js",
   "engines": {
