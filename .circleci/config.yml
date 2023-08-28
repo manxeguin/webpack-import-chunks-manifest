@@ -52,13 +52,6 @@ jobs:
               - "aa:d6:2e:fc:2e:92:59:24:2d:a4:e2:e2:16:04:5c:63"
       - attach_workspace:
           at: ~/project
-      - run: mkdir -p ~/.ssh      
-      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - run:
-          name: Configure Git User Identity
-          command: |
-            git config --global user.name "manxeguin"
-            git config --global user.email "manxeguin1987@gmail.com"
       - run:
           name: Log in to npm
           command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
