@@ -73,7 +73,7 @@ jobs:
       - run:
           name: Check for Changesets
           command: |
-            if [ -n "$(git diff --name-only $CIRCLE_SHA1^..$CIRCLE_SHA1 | grep '^\.changeset')" ]; then
+            if [ -n "$(find . -name '*.md' -path './.changeset/*')" ]; then
               echo "Changesets found."
               echo 'SET_DEPLOY_VARIABLE=true' >> $BASH_ENV
 
