@@ -50,6 +50,7 @@ jobs:
       - add_ssh_keys:
             fingerprints:
               - "aa:d6:2e:fc:2e:92:59:24:2d:a4:e2:e2:16:04:5c:63"
+              - "SHA256:R4kY2ZFUDSGW7GCgSVY8X7NtLFbx018ExmkZokY6xQk"
       - attach_workspace:
           at: ~/project
       - run:
