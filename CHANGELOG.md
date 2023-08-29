@@ -1,5 +1,11 @@
 # webpack-import-chunks-manifest
 
+## 1.0.6
+
+### Patch Changes
+
+- 6fecee6: patch bump test
+
 ## 1.0.5
 
 ### Patch Changes
