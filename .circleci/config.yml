@@ -3,7 +3,6 @@ orbs:
   node: circleci/node@5.0.2
 
 jobs:
-
   build_and_test:
     executor: node/default
     steps:
@@ -31,41 +30,12 @@ jobs:
           environment:
             NPM_TOKEN: $NPM_TOKEN
 
-      # - run:
-      #     name: Check for Changesets
-      #     command: |
-      #       if [ -n "$(find . -name '*.md' -path './.changeset/*')" ]; then
-      #         echo "Changesets found."
-      #         echo 'SET_DEPLOY_VARIABLE=true' >> $BASH_ENV
-
-      #       else
-      #         echo "No changesets found."
-      #       fi
-
-      # - run:
-      #     name: Deploy if Changesets Exist
-      #     command: |
-      #       if [ "$SET_DEPLOY_VARIABLE" = "true" ]; then
-      #         echo "Deploying..."
-      #         npm run version-packages
-      #         npm run publish-packages
-      #         git add .
-      #         git commit -m "Commit changes"
-      #         git push --follow-tags
-      #       else
-      #         echo "Skipping deploy."
-      #       fi
-
   deploy:
     executor: node/default
     steps:
       - checkout
       - attach_workspace:
           at: .
-      # - add_ssh_keys:
-      #       fingerprints:
-      #         - "aa:d6:2e:fc:2e:92:59:24:2d:a4:e2:e2:16:04:5c:63"
-      #         - "SHA256:R4kY2ZFUDSGW7GCgSVY8X7NtLFbx018ExmkZokY6xQk"
       - run:
           name: Configure Git User Identity
           command: |
