@@ -1,5 +1,11 @@
 # webpack-import-chunks-manifest
 
+## 1.0.7
+
+### Patch Changes
+
+- 8a623cc: v7
+
 ## 1.0.6
 
 ### Patch Changes
