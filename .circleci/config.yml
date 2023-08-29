@@ -59,6 +59,7 @@ jobs:
   deploy:
     executor: node/default
     steps:
+      - checkout
       - attach_workspace:
           at: .
       # - add_ssh_keys:
